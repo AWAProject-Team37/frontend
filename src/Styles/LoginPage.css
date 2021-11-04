@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.loginBody{
+    background-color: #454BDE;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer{
+    display: flex;
+    border-radius: 25px;
+    flex-direction: column;
+    background-color: white;
+    height: 50vh;
+    width: 50vh;
+    box-shadow: 4px 4px 30px 5px #120FA0;
+}
+/* Login and Register buttons */
+.loginPageTabsContainer{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    font-size: 28px;
+}
+
+.tabButton{
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+
+.tabButtonActive{
+    border-bottom: 3px solid #454BDE;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.loginForm{
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 75%;
+    height: 100%;
+    font-size: 24px;
+}
+
+.loginFormButton{
+    color: white;
+    background-color: #454BDE;
+    border: none;
+    width: 200px;
+    height: 50px;
+    font-size: 32px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 1px #120FA0;
+    align-self: center;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.loginFormInputField{
+    width: 100%;
+    height: 32px;
+    font-size: 20px;
+}
