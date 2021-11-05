@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.frontPageBody{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10vh;
+    margin-right: 10vh;
+}
+
+.searchBar{
+    width: 70vh;
+    height: 4vh;
+    font-size: 28px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    align-self: center;
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 15px -5px #000000;
+}
+
+.searchBar:focus{
+    outline: none;
+}
+
+.restaurantComponent{
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 400px;
+    max-height: 400px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    box-shadow: 0px 10px 16px -4px rgba(0,0,0,0.79);
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 30px;
+}
+.restaurantList{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.restaurantImg{
+    height: 250px;
+    width: 100%;
+    border-radius: 20px;
+}
+.restaurantName{
+    margin: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+.restaurantInfo{
+    font-size: 18px;
+    margin: 10px;
+}
+.divider{
+    border-top: 3px dashed rgb(119, 116, 116);
+}
