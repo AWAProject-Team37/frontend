@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+   
+}
+.button3{
+   
+width: 200px;
+height: 80px;
+left: 0px;
+font-weight: bold;
+font-size: 26px;
+color: white;
+background-color: #2C315D;
+   
+
+
+}
+.button2{
+    
+    width: 200px;
+    height: 80px;
+    left: 0px;
+    font-weight: bold;
+    font-size: 26px;
+    color: white;
+    
+    background-color: #2C315D;
+}
+.button1{
+    
+    width: 200px;
+    height: 80px;
+    left: 0px;
+    
+    
+    font-weight: bold;
+    font-size: 26px;
+    color: white;
+    background-color: #2C315D;
+    
+    
+}
+.button4{
+    
+    width: 200px;
+    height: 80px;
+    left: 0px;
+    top: 300px;
+    font-weight: bold;
+    font-size: 26px;
+    color: white;
+    background-color: #2C315D;
+    
+}
+.mainmenu{
+    width: 200px;
+    height: 80px;
+    left: 0px;
+    top: 300px;
+    font-weight: bold;
+    font-size: 26px;
+    background-color: #2C315D;   
+    color: white;
+}
