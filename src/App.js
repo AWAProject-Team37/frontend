@@ -10,6 +10,8 @@ function App() {
       <Route exact path="/" component={FrontPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/manager" component={ManagerPage}/>
+      
+      
     </BrowserRouter>
   );
 }
