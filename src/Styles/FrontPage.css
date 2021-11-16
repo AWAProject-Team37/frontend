@@ -39,6 +39,9 @@
     margin-bottom: 25px;
     margin-right: 30px;
 }
+.restaurantComponent:hover{
+    cursor: pointer;
+}
 .categoryComponent{
     display:flex;
     flex-direction: column;
