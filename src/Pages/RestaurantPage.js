@@ -27,31 +27,37 @@ const RestaurantPage = () => {
             priceLevel: "€",
             menu: [
                 {
+                    id: 0,
                     itemName: "kebu pitsa",
-                    prize: 11,
+                    price: 11,
                     category: "pizza"
                 },
                 {
+                    id: 1,
                     itemName: "americano",
-                    prize: 9,
+                    price: 9,
                     category: "pizza"
                 },
                 {
+                    id: 2,
                     itemName: "fantasy",
-                    prize: 12,
+                    price: 12,
                     category: "pizza"
                 },
                 {
+                    id: 3,
                     itemName: "karhu IV",
-                    prize: 6,
+                    price: 6,
                     category: "drinks"
                 },
                 {
+                    id: 4,
                     itemName: "keburulla",
-                    prize: 11,
+                    price: 11,
                     category: "kebab"
                 },
                 {
+                    id: 5,
                     itemName: "hamburger",
                     price: 8,
                     category: "hamburger"
@@ -65,7 +71,6 @@ const RestaurantPage = () => {
         <TopBar/>
         <img src={restaurantData.image} alt={restaurantData.altText} className="restaurantHeaderImg"/>
         <div className="restaurantBody">
-            
             <h1>{restaurantData.restaurantName}</h1>
             <RestaurantMenu {...restaurantData.menu}/>
         </div>
