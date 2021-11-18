@@ -1,5 +1,4 @@
 import React from 'react'
-import ManagerTopBar from './ManagerTopBar'
 
 const ViewOrdersComponent = () => {
     return (
