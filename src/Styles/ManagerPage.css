@@ -3,80 +3,69 @@
     margin: 0;
     padding: 0;
 }
+
 .container{
-    position: absolute;
-width: 646px;
-height: 125px;
-left: 637px;
-top: 150px;
+    display: flex;
+    flex-direction: column;
+   
+}
+.button3{
+   
+width: 200px;
+height: 80px;
+left: 0px;
+font-weight: bold;
+font-size: 26px;
+color: white;
+background-color: #2C315D;
+   
 
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 64px;
-line-height: 75px;
-
-color: #000000;
 
 }
-.ControlOrderComponent{
-    position: absolute;
-width: 505px;
-height: 134px;
-left: 132px;
-top: 463px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 48px;
-line-height: 56px;
-
-color: #000000;
+.button2{
+    
+    width: 200px;
+    height: 80px;
+    left: 0px;
+    font-weight: bold;
+    font-size: 26px;
+    color: white;
+    
+    background-color: #2C315D;
 }
-.CreateMenuComponent{
-    position: absolute;
-    width: 505px;
-    height: 134px;
-    left: 132px;
-    top: 329px;
+.button1{
     
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 48px;
-    line-height: 56px;
+    width: 200px;
+    height: 80px;
+    left: 0px;
     
-    color: #000000;
-}
-.CreateRestaurantComponent{
-    position: absolute;
-    width: 505px;
-    height: 134px;
-    left: 132px;
-    top: 195px;
     
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 48px;
-    line-height: 56px;
+    font-weight: bold;
+    font-size: 26px;
+    color: white;
+    background-color: #2C315D;
     
-    color: #000000;
     
 }
-.ViewOrdersComponent{
-    position: absolute;
-    width: 505px;
-    height: 134px;
-    left: 132px;
-    top: 597px;
+.button4{
     
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 48px;
-    line-height: 56px;
+    width: 200px;
+    height: 80px;
+    left: 0px;
+    top: 300px;
+    font-weight: bold;
+    font-size: 26px;
+    color: white;
+    background-color: #2C315D;
     
-    color: #000000;
+}
+.mainmenu{
+    width: 200px;
+    height: 80px;
+    left: 0px;
+    top: 300px;
+    font-weight: bold;
+    font-size: 26px;
+    background-color: #2C315D;   
+    color: white;
 }

@@ -1,9 +1,10 @@
 import React from 'react'
 
-const CategoryComponent = () => {
+const CategoryComponent = (props) => {
     return (
-        <div>
-            
+        <div className="categoryComponent">
+            <img src={props.image} alt={props.alt} className="restaurantImg"></img>
+            <div className="categoryName">{props.category}</div>
         </div>
     )
 }

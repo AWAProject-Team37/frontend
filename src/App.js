@@ -3,7 +3,12 @@ import './App.css';
 import LoginPage from './Pages/LoginPage';
 import FrontPage from './Pages/FrontPage';
 import ManagerPage from './Pages/ManagerPage';
+import RestaurantPage from './Pages/RestaurantPage';
+
 import ShoppingCartPage from './Pages/ShoppingCartPage';
+
+
+
 
 function App() {
   return (
@@ -11,7 +16,12 @@ function App() {
       <Route exact path="/" component={FrontPage}/>
       <Route path="/login" component={LoginPage}/>
       <Route path="/manager" component={ManagerPage}/>
+
       <Route path="/cart" component={ShoppingCartPage}/>
+
+      <Route path="/restaurant/:id" component={RestaurantPage}/>
+
+
     </BrowserRouter>
   );
 }

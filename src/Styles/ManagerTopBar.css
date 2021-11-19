@@ -12,10 +12,21 @@
     height: 7vh;
     padding-left: 25px;
     padding-right: 25px;
+    gap: 550px;
 }
+
 
 .logo{
     color:white;
     font-size: 32px;
     font-weight: bold;
+}
+.sign{
+    color: white;
+    font-size: 16px;
+    
+}
+.logout{
+    color: white;
+    font-size: 16px;
 }

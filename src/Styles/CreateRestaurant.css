@@ -1,0 +1,40 @@
+
+
+.RestaurantForm{
+    
+    max-width: 400px;
+    margin: 0 auto;
+    text-align:  center;
+    margin-top: -22%;
+    
+}
+.RestaurantForm h2{
+    color: #2C315D;
+    font-size: 30px;
+}
+.RestaurantForm label{
+    text-align: left;
+    display: block;
+    font-size: 20px;
+}
+.RestaurantForm input, .RestaurantForm select{
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+    font-size: 20px;
+
+}
+.RestaurantForm button{
+    background-color: #2C315D;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    
+}
