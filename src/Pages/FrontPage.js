@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios';
 import TopBar from '../Components/TopBar'
 import RestaurantList from '../Components/RestaurantList'
 import CategoryList from '../Components/CategoryList'
@@ -56,17 +57,25 @@ const FrontPage = () => {
         alt: "pizza"
     }]
     const [searchValue, setSearchValue] = useState("");
+    const [restaurants, setRestaurants] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:4000/restaurants").then(res => {
+            setRestaurants(res.data);
+        })
+    },[])
 
     const handleSearchChange = (event) => {
         setSearchValue(event.target.value);
     }
-    
+    console.log(restaurants);
     return (
         <>
         <TopBar/>
         <div className="frontPageBody">
             <input type="text" placeholder="Search for restaurant..." className="searchBar" value={searchValue} onChange={handleSearchChange}></input>
-            <RestaurantList testData={testData.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))}/>
+            {/*<RestaurantList restaurants={restaurants.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()))}/>*/}
+            <RestaurantList restaurants={restaurants.filter(item => item.Name.toLowerCase().includes(searchValue.toLowerCase()))}/>
             <CategoryList/>
         </div>
         </>

@@ -4,20 +4,20 @@ import { useHistory } from "react-router-dom";
 const RestaurantComponent = (props) => {
 
     const history = useHistory();
-
+    console.log(props);
     const routeChange = () => {
-        let path = `restaurant/${props.id}`;
+        let path = `restaurant/${props.idRestaurant}`;
         history.push(path);
     }
 
 
     return (
         <div className="restaurantComponent" onClick={routeChange}>
-            <img src={props.image} alt={props.alt} className="restaurantImg"></img>
-            <div className="restaurantName">{props.name}</div>
+            <img src={props.Image} alt="restaurant" className="restaurantImg"></img>
+            <div className="restaurantName">{props.Name}</div>
             <div className="divider"></div>
-            <div className="restaurantInfo">{props.priceLevel} - {props.deliveryTime}</div>
-            <div className="restaurantInfo">Open: {props.operatingHours}</div>
+            <div className="restaurantInfo">{props.PriceLevel}</div>
+            <div className="restaurantInfo">Open: {props.OperatingHour}</div>
         </div>
     )
 }
