@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 const RestaurantComponent = (props) => {
 
     const history = useHistory();
-    console.log(props);
     const routeChange = () => {
         let path = `restaurant/${props.idRestaurant}`;
         history.push(path);

@@ -5,7 +5,7 @@ const RestaurantList = (props) => {
         <div>
             <h1>Restaurants:</h1>
             <div className="restaurantList">
-                {props.restaurants.map(item => <RestaurantComponent {...item} key={item.id}/>)}
+                {props.restaurants.map(item => <RestaurantComponent {...item} key={item.idRestaurant}/>)}
             </div>
             
         </div>
