@@ -2,6 +2,7 @@ import React from 'react'
 import "../Styles/CreateRestaurant.css"
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import axios from 'axios';
 
 const CreateRestaurantComponent = () => {
 
@@ -20,17 +21,16 @@ const CreateRestaurantComponent = () => {
 
          setIsPending(true);
          
-       fetch('http://localhost:3000' ,{
-          method: 'POST',
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(restaurant)
+        axios.post('http://localhost:4000', restaurant)
+          
 
-     }).then(() => {
+        .then(() => {
          console.log("Restaurant added");
          setIsPending(false);
         history.push('/manager');
-     })
+        })
      }
+     
     
     return (
         <>
