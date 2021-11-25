@@ -2,9 +2,12 @@ import React from 'react'
 import "../Styles/CreateMenu.css"
 import { useState } from 'react'
 
-const CreateMenuComponent = () => {
 
-   
+
+
+
+const CreateMenuComponent = (props) => {
+
 
    const handleSubmit = (e) => {
        e.preventDefault();
