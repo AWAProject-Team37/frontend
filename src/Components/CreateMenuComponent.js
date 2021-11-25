@@ -1,6 +1,7 @@
 import React from 'react'
 import "../Styles/CreateMenu.css"
 import { useState } from 'react'
+import axios from 'axios'
 
 
 
@@ -11,19 +12,36 @@ const CreateMenuComponent = (props) => {
 
    const handleSubmit = (e) => {
        e.preventDefault();
+       const product = {name,desc,image,type,price}
+       console.log(product);
+       setIsPending(true);
+       axios.post('http://localhost:4000', product)
+       .then(response => {
+           console.log(response)
+           setIsPending(false);
+           clearFields(e);
+           setDesc("");
+           setPrice("");
+           setName("");
+           setImage("");
+           setType("");
+       })
+      
+       .catch(error=>{
+           console.log(error)
+       })
        
    }
-  
-
-    const addProduct = () => {
-        addProduct(name,desc,image,type,price);
-    }
+   function clearFields(e){
+       Array.from(e.target).forEach((e) => (e.value = ""));
+   }
 
     const [name, setName] = useState('')
     const [desc, setDesc] = useState('')
     const [image, setImage] = useState('')
     const [type, setType] = useState('')
     const [price, setPrice] = useState('')
+    const [ isPending, setIsPending] = useState(false)
     return (
         <>
         
@@ -59,17 +77,15 @@ const CreateMenuComponent = (props) => {
                  onChange={(e) => setImage(e.target.value)}
                  />
                   <label> Category: </label>
-                    <select
+                    <input
+                    type = "text"
+                    required
                     value = {type}
                     onChange={(e) => setType(e.target.value)}
-                    >
-                      <option value="Pizza">Pizza</option>
-                      <option value="Hamburger">Hamburger</option>
-                      <option value="Kebab">Kebab</option>
-                      <option value="Drinks">Drinks</option>
-                      <option value="Starters">Starters</option>
-                 </select>
-                 <button onClick={addProduct  }> Add product </button>
+                    />
+                      
+                {!isPending &&<button > Add product</button>}
+                {isPending &&<button disabled> Adding... </button>}
 
 
               </form>
