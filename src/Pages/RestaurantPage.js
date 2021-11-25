@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import TopBar from '../Components/TopBar';
 import "../Styles/RestaurantPage.css"
 import RestaurantMenu from '../Components/RestaurantMenu';
 const RestaurantPage = () => {
 
-    const [restaurantData, setRestaurantData] = useState({}); // Put data from api here
+    const [restaurantData, setRestaurantData] = useState(null);
+    const [restaurantMenu, setRestaurantMenu] = useState(null);
+    const [loadingData, setLoadingData] = useState(true);
+    const [loadingMenu, setLoadingMenu] = useState(true);
 
     // Function to get restaurant id from url
     const getRestaurantID = () => {
@@ -13,66 +17,25 @@ const RestaurantPage = () => {
     }
     // Store restaurant id here and use it to make api request to get correct data
     const restaurantID = getRestaurantID(); 
-    console.log("restaurant id = "+restaurantID);
+
     useEffect(() => {
-        // Make some api request and get data using restaurant id or something like that
-        // Here is some test data to simulate api response
-        setRestaurantData({
-            restaurantName: "Pizzeria",
-            restaurantAddress: "blablabla123",
-            operatingHours: "0-24",
-            image: "https://st.depositphotos.com/1003814/5052/i/950/depositphotos_50523105-stock-photo-pizza-with-tomatoes.jpg",
-            altText: "kuva",
-            restaurantType: "pizzeria",
-            priceLevel: "€",
-            menu: [
-                {
-                    id: 0,
-                    itemName: "kebu pitsa",
-                    price: 11,
-                    category: "pizza"
-                },
-                {
-                    id: 1,
-                    itemName: "americano",
-                    price: 9,
-                    category: "pizza"
-                },
-                {
-                    id: 2,
-                    itemName: "fantasy",
-                    price: 12,
-                    category: "pizza"
-                },
-                {
-                    id: 3,
-                    itemName: "karhu IV",
-                    price: 6,
-                    category: "drinks"
-                },
-                {
-                    id: 4,
-                    itemName: "keburulla",
-                    price: 11,
-                    category: "kebab"
-                },
-                {
-                    id: 5,
-                    itemName: "hamburger",
-                    price: 8,
-                    category: "hamburger"
-                }
-                
-            ]
-        })
-    }, []);
+        axios.get(`http://localhost:4000/restaurants/${restaurantID}`).then(res => {
+            setRestaurantData(res.data)
+            setLoadingData(false);
+        }).catch(err => console.log(err))
+        axios.get(`http://localhost:4000/items/${restaurantID}`).then(res => {
+            setRestaurantMenu(res.data)
+            setLoadingMenu(false);
+        }).catch(err => console.log(err))
+    },[])
     return (
+        loadingData || loadingMenu === true ? <div></div> :
         <>
         <TopBar/>
-        <img src={restaurantData.image} alt={restaurantData.altText} className="restaurantHeaderImg"/>
+        <img src={restaurantData[0].Image} alt="restaurant" className="restaurantHeaderImg"/>
         <div className="restaurantBody">
-            <h1>{restaurantData.restaurantName}</h1>
-            <RestaurantMenu {...restaurantData.menu}/>
+            <h1>{restaurantData[0].Name}</h1>
+            <RestaurantMenu {...restaurantMenu}/>
         </div>
         </>
     )
