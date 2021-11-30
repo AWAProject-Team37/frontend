@@ -1,12 +1,12 @@
 import React from 'react'
 import "../Styles/FrontPage.css"
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const RestaurantComponent = (props) => {
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const routeChange = () => {
         let path = `restaurant/${props.idRestaurant}`;
-        history.push(path);
+        navigate(path);
     }
 
 
