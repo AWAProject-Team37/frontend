@@ -15,7 +15,7 @@ const CreateMenuComponent = (props) => {
        const product = {name,desc,image,type,price}
        console.log(product);
        setIsPending(true);
-       axios.post('http://localhost:4000', product)
+       axios.post('http://localhost:4000/items', product)
        .then(response => {
            console.log(response)
            setIsPending(false);

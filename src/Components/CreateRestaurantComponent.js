@@ -1,33 +1,27 @@
 import React from 'react'
 import "../Styles/CreateRestaurant.css"
 import { useState } from 'react';
-import { useHistory } from 'react-router';
 import axios from 'axios';
 
 const CreateRestaurantComponent = () => {
 
-     const [name, setName] = useState('')
-     const [Address, setAddress] = useState('')
-     const [time, setTime] = useState('')
-     const [image, setImage] = useState('')
-     const [type, setType] = useState('Buffet')
-     const [price, setPrice] = useState('€')
-     const [ isPending, setIsPending] = useState(false)
-     const history = useHistory();
+    const [name, setName] = useState('')
+    const [Address, setAddress] = useState('')
+    const [time, setTime] = useState('')
+    const [image, setImage] = useState('')
+    const [type, setType] = useState('Buffet')
+    const [price, setPrice] = useState('€')
+    const [ isPending, setIsPending] = useState(false)
 
      const handleSubmit = (e) => {
-         e.preventDefault();
-         const restaurant = { name, Address, time, image, type, price};
-
-         setIsPending(true);
-         
-        axios.post('http://localhost:4000', restaurant)
-          
-
+        e.preventDefault();
+        const restaurant = { name, Address, time, image, type, price};
+        console.log(restaurant);
+        setIsPending(true);       
+        axios.post('http://localhost:4000/restaurants', restaurant)
         .then(() => {
-         console.log("Restaurant added");
-         setIsPending(false);
-        history.push('/manager');
+        setIsPending(false);
+        window.location.reload(true);
         })
      }
      

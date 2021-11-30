@@ -27,7 +27,7 @@ const RestaurantPage = () => {
             setRestaurantMenu(res.data)
             setLoadingMenu(false);
         }).catch(err => console.log(err))
-    },[])
+    },[restaurantID])
     return (
         loadingData || loadingMenu === true ? <div></div> :
         <>
