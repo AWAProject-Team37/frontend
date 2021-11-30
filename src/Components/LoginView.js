@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 import "../Styles/LoginPage.css"
 const LoginView = () => {
+    const [loginError, setLoginError] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -13,14 +14,16 @@ const LoginView = () => {
                 }
             });
             const jwt = result.data.jwt;
+            setLoginError(false);
             console.log(jwt);
         } catch(error) {
-            console.log(error);
-    
+            setLoginError(true);
+            console.log(error.response.data)  
      }
     }
     return (
         <div className="loginForm">
+            {loginError === true ? <div style={{color: "red"}}>Invalid email or password</div> : null}
             <form onSubmit={handleSubmit}>
                 <p>Email</p>
                 <input type="text" placeholder="Email..." className="loginFormInputField" name="email"></input>

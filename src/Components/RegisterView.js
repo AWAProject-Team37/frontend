@@ -1,7 +1,10 @@
 import axios from 'axios';
-import React from 'react'
+import React, {useState} from 'react'
 
 const RegisterView = () => {
+    const [registerError, setRegisterError] = useState(false);
+    const [registerSuccesfull, setRegisterSuccesfull] = useState(false);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         let managerStatus;
@@ -20,22 +23,31 @@ const RegisterView = () => {
             });
             
             console.log(result);
+            setRegisterError(false);
+            setRegisterSuccesfull(true);
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 1000)
         } catch(error){
-            console.log(error);
+            console.log(error.response.data);
+            setRegisterError(true);
+            setRegisterSuccesfull(false);
         }
         
     }
     return (
         <div className="loginForm">
+            {registerError === true ? <div style={{color: "red"}}>Failed to register. Check email.</div> : null}
+            {registerSuccesfull === true ? <div style={{color: "green"}}>Registered</div> : null}
             <form onSubmit={handleSubmit}>
             <p>Firstname</p>
-            <input type="text" placeholder="Firstname..." className="loginFormInputField" name="FirstName"></input>
+            <input type="text" placeholder="Firstname..." className="loginFormInputField" name="FirstName" required="required"></input>
             <p>Lastname</p>
-            <input type="text" placeholder="Lastname..." className="loginFormInputField" name="LastName"></input>
+            <input type="text" placeholder="Lastname..." className="loginFormInputField" name="LastName" required="required"></input>
             <p>Email</p>
-            <input type="text" placeholder="Email..." className="loginFormInputField" name="Email"></input>
+            <input type="email" placeholder="Email..." className="loginFormInputField" name="Email" required="required"></input>
             <p>Password</p>
-            <input type="password" placeholder="Password..." className="loginFormInputField" name="Password"></input>
+            <input type="password" placeholder="Password..." className="loginFormInputField" name="Password" required="required"></input>
             <p>Account type</p>
             <select placeholder="Choose account type" className="loginFormInputField" name="AccountType">
                 <option value="Customer">Customer</option>
