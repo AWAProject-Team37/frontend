@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import "../Styles/LoginPage.css"
-const LoginView = () => {
+const LoginView = (props) => {
     const [loginError, setLoginError] = useState(false);
-
+    const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
@@ -15,7 +16,8 @@ const LoginView = () => {
             });
             const jwt = result.data.jwt;
             setLoginError(false);
-            console.log(jwt);
+            props.getJwt(jwt);
+            navigate("/foodapp");
         } catch(error) {
             setLoginError(true);
             console.log(error.response.data)  
@@ -26,9 +28,9 @@ const LoginView = () => {
             {loginError === true ? <div style={{color: "red"}}>Invalid email or password</div> : null}
             <form onSubmit={handleSubmit}>
                 <p>Email</p>
-                <input type="text" placeholder="Email..." className="loginFormInputField" name="email"></input>
+                <input type="email" placeholder="Email..." className="loginFormInputField" name="email" required="required"></input>
                 <p>Password</p>
-                <input type="password" placeholder="Password..." className="loginFormInputField" name="password"></input>
+                <input type="password" placeholder="Password..." className="loginFormInputField" name="password" required="required"></input>
                 <button className="loginFormButton" type="submit">Login</button>
             </form>
         </div>

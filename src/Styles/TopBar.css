@@ -7,6 +7,7 @@
 .topBarContainer{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #2C315D;
     width: 100%;
     height: 7vh;
@@ -18,4 +19,9 @@
     color:white;
     font-size: 32px;
     font-weight: bold;
+}
+
+.welcomeText{
+    color: white;
+    font-size: 24px;
 }
