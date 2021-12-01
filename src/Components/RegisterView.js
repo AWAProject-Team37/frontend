@@ -29,7 +29,6 @@ const RegisterView = () => {
                 window.location.reload(false);
             }, 1000)
         } catch(error){
-            console.log(error.response.data);
             setRegisterError(true);
             setRegisterSuccesfull(false);
         }
@@ -37,7 +36,7 @@ const RegisterView = () => {
     }
     return (
         <div className="loginForm">
-            {registerError === true ? <div style={{color: "red"}}>Failed to register. Check email.</div> : null}
+            {registerError === true ? <div style={{color: "red"}}>Failed to register.</div> : null}
             {registerSuccesfull === true ? <div style={{color: "green"}}>Registered</div> : null}
             <form onSubmit={handleSubmit}>
             <p>Firstname</p>
