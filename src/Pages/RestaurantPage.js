@@ -13,11 +13,10 @@ const RestaurantPage = () => {
     // Function to get restaurant id from url
     const getRestaurantID = () => {
         let splitUrl = window.location.pathname.split("/");
-        return parseInt(splitUrl[2]);
+        return parseInt(splitUrl[3]);
     }
     // Store restaurant id here and use it to make api request to get correct data
     const restaurantID = getRestaurantID(); 
-
     useEffect(() => {
         axios.get(`http://localhost:4000/restaurants/${restaurantID}`).then(res => {
             setRestaurantData(res.data)
@@ -31,7 +30,7 @@ const RestaurantPage = () => {
     return (
         loadingData || loadingMenu === true ? <div></div> :
         <>
-        <TopBar/>
+        {/*<TopBar/>*/}
         <img src={restaurantData[0].Image} alt="restaurant" className="restaurantHeaderImg"/>
         <div className="restaurantBody">
             <h1>{restaurantData[0].Name}</h1>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const CreateRestaurantComponent = () => {
-
+    const [errorMsg, setErrorMsg] = useState(null);
     const [name, setName] = useState('')
     const [Address, setAddress] = useState('')
     const [time, setTime] = useState('')
@@ -15,14 +15,32 @@ const CreateRestaurantComponent = () => {
 
      const handleSubmit = (e) => {
         e.preventDefault();
-        const restaurant = { name, Address, time, image, type, price};
-        console.log(restaurant);
-        setIsPending(true);       
-        axios.post('http://localhost:4000/restaurants', restaurant)
+        const config = {
+          headers: {
+            "Content-type": "multipart/form-data"
+          }
+        }
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('Address', Address);
+        formData.append('time', time);
+        formData.append('image', image);
+        formData.append('type', type);
+        formData.append('price', price);
+        
+        setIsPending(true);      
+        
+        axios.post('http://localhost:4000/restaurants', formData, config)
         .then(() => {
         setIsPending(false);
         window.location.reload(true);
-        })
+        }).catch(error => {
+          setErrorMsg(error.response.data.msg);
+          setIsPending(false);
+        }
+          
+        )
+
      }
      
     
@@ -31,6 +49,7 @@ const CreateRestaurantComponent = () => {
        
         <div className = "RestaurantForm">
             <h2>Create a restaurant</h2>
+            {errorMsg ? <div style={{color:"red"}}>{errorMsg}</div>:null}
              <form onSubmit={handleSubmit}>
                  <label> Name: </label>
                  <input
@@ -55,10 +74,10 @@ const CreateRestaurantComponent = () => {
                  />
                  <label> Image: </label>
                  <input
-                 type="text"
+                 type="file"
                  required
-                 value = {image}
-                 onChange={(e) => setImage(e.target.value)}
+                 //value = {image}
+                 onChange={(e) => setImage(e.target.files[0])}
                  />
                   <label> Restaurant type: </label>
                     <select
