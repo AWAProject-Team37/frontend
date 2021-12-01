@@ -17,8 +17,7 @@ const FrontPage = (props) => {
     }
     return (
         <>
-        <TopBar name={props.userInfo.FirstName}/>
-        <button onClick={props.logout}>LOG OUT</button>
+        <TopBar userInfo={props.userInfo} logout={props.logout}/>
         <div className="frontPageBody">
             <input type="text" placeholder="Search for restaurant..." className="searchBar" value={searchValue} onChange={handleSearchChange}></input>
             <RestaurantList restaurants={restaurants.filter(item => item.Name.toLowerCase().includes(searchValue.toLowerCase()))}/>

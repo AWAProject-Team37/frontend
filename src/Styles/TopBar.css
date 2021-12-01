@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.topBarContainer{
+.topBar{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,4 +24,21 @@
 .welcomeText{
     color: white;
     font-size: 24px;
+}
+.buttons{
+    display: flex;
+}
+.buttons button{
+    margin-left: 50px;
+    border: 1px solid white;
+    color: white;
+    background-color: #2C315D;
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+.buttons button:hover{
+    cursor: pointer;
+    background-color: #464d8b;
 }
