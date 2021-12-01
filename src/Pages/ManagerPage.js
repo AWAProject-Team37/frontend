@@ -7,7 +7,7 @@ import ControlOrderComponent from '../Components/ControlOrderComponent'
 import ViewOrdersComponent from '../Components/ViewOrdersComponent'
 import ManagerMainMenu from '../Components/ManagerMainMenu'
 
- const ManagerPage = () => {
+ const ManagerPage = (props) => {
      const [view, setView] = useState("");
      let toggleView = (viewMode) => {
          setView(viewMode);
@@ -15,9 +15,11 @@ import ManagerMainMenu from '../Components/ManagerMainMenu'
      console.log(view);
     return (
         <>
-        <ManagerTopBar/>
+        <ManagerTopBar userInfo={props.userInfo} logout={props.logout}/>
         
         <ManagerMainMenu toggleView={toggleView}/>
+        
+        
 
         
         {view === "foodmenu" ? <CreateMenuComponent/> : null} 

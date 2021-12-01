@@ -46,7 +46,7 @@ function App() {
     <Route path="*" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
     <Route path="/cart" element={<ShoppingCartPage/>}/>
     <Route path="/restaurant/:id" element={<RestaurantPage/>}/>
-    <Route path="/manager" element={<ManagerPage/>}/>
+    <Route path="/manager" element={<ManagerPage logout={logout} userInfo={userInfo}/>}/>
     </>
   }
 
