@@ -19,8 +19,7 @@ const LoginView = (props) => {
             props.getJwt(jwt);
             navigate("/foodapp");
         } catch(error) {
-            setLoginError(true);
-            console.log(error.response.data)  
+            setLoginError(true); 
      }
     }
     return (

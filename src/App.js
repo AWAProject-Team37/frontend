@@ -6,10 +6,11 @@ import FrontPage from './Pages/FrontPage';
 import ManagerPage from './Pages/ManagerPage';
 import RestaurantPage from './Pages/RestaurantPage';
 import ShoppingCartPage from './Pages/ShoppingCartPage';
+import jwt from 'jsonwebtoken';
 
 function App() {
   const [userToken, setUserToken] = useState(null);
-
+  const userInfo = jwt.decode(userToken);
   useEffect(() => {
     setUserToken(localStorage.getItem('userToken'));
   },[])
@@ -31,15 +32,22 @@ function App() {
 
   if(userToken != null){
     routes = <>
-    <Route path="/foodapp" element={<FrontPage userToken={userToken} logout={logout}/>}/>
-    <Route path="*" element={<FrontPage userToken={userToken} logout={logout}/>}/>
+    <Route path="/foodapp" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
+    <Route path="*" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
     <Route path="/cart" element={<ShoppingCartPage/>}/>
     <Route path="/restaurant/:id" element={<RestaurantPage/>}/>
   </>
   }
-  let managerRoutes = <>
+  if(userToken != null && userInfo.isManager === 1){
+    routes = <>
+    <Route path="/foodapp" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
+    <Route path="*" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
+    <Route path="/cart" element={<ShoppingCartPage/>}/>
+    <Route path="/restaurant/:id" element={<RestaurantPage/>}/>
     <Route path="/manager" element={<ManagerPage/>}/>
-  </>
+    </>
+  }
+
 
   return (
     <BrowserRouter>
