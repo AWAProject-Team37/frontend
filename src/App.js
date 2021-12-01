@@ -23,13 +23,14 @@ function App() {
     localStorage.clear();
     setUserToken(null);
   }
-
+  
+  // Routes if not logged in
   let routes = <>
     <Route path="/login" element={<LoginPage getJwt={getJwt}/>}/>
     <Route path="*" element={<LoginPage getJwt={getJwt}/>}/>
     
   </>
-
+  // Routes for customer login
   if(userToken != null){
     routes = <>
     <Route path="/foodapp" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
@@ -38,6 +39,7 @@ function App() {
     <Route path="/restaurant/:id" element={<RestaurantPage/>}/>
   </>
   }
+  // Routes for manager login
   if(userToken != null && userInfo.isManager === 1){
     routes = <>
     <Route path="/foodapp" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
