@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useState} from 'react'
-
+import {apiAddress} from "../Constants"
 const RegisterView = () => {
     const [registerError, setRegisterError] = useState(false);
     const [registerSuccesfull, setRegisterSuccesfull] = useState(false);
@@ -14,7 +14,7 @@ const RegisterView = () => {
             managerStatus = true;
         }
         try{
-            const result = await axios.post(`http://localhost:4000/register`, {
+            const result = await axios.post(`${apiAddress}/register`, {
                 FirstName: event.target.FirstName.value,
                 LastName: event.target.LastName.value,
                 Email: event.target.Email.value,
