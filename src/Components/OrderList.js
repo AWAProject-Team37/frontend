@@ -22,7 +22,7 @@ const OrderList = () => {
         <div>
           <ul>
            {orders.map(order =>(
-               <li key = {order.id}>{order.product}</li>
+               <li key = {order.id}>{order.firstName}{order.product}</li>
            ))}   
           </ul>   
         </div>
