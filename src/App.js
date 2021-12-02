@@ -45,11 +45,10 @@ function App() {
     <Route path="foodapp/restaurant/:id" element={<RestaurantPage/>}/>
     <Route path="/foodapp" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
     <Route path="*" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
-    <Route path="/manager" element={<ManagerPage/>}/>
+    <Route path="/manager" element={<ManagerPage id={userInfo.idUser}/>}/>
     </>
   }
-
-
+  console.log(userInfo);
   return (
     <BrowserRouter>
       <Routes>

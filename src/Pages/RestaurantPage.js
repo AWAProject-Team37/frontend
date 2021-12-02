@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import TopBar from '../Components/TopBar';
+//import TopBar from '../Components/TopBar';
 import "../Styles/RestaurantPage.css"
 import RestaurantMenu from '../Components/RestaurantMenu';
+import {apiAddress} from "../Constants"
 const RestaurantPage = () => {
 
     const [restaurantData, setRestaurantData] = useState(null);
@@ -18,11 +19,11 @@ const RestaurantPage = () => {
     // Store restaurant id here and use it to make api request to get correct data
     const restaurantID = getRestaurantID(); 
     useEffect(() => {
-        axios.get(`http://localhost:4000/restaurants/${restaurantID}`).then(res => {
+        axios.get(`${apiAddress}/restaurants/${restaurantID}`).then(res => {
             setRestaurantData(res.data)
             setLoadingData(false);
         }).catch(err => console.log(err))
-        axios.get(`http://localhost:4000/items/${restaurantID}`).then(res => {
+        axios.get(`${apiAddress}/items/${restaurantID}`).then(res => {
             setRestaurantMenu(res.data)
             setLoadingMenu(false);
         }).catch(err => console.log(err))

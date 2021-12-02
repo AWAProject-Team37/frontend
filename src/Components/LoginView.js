@@ -2,13 +2,14 @@ import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import "../Styles/LoginPage.css"
+import {apiAddress} from "../Constants"
 const LoginView = (props) => {
     const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            const result = await axios.post(`http://localhost:4000/login`, null ,{
+            const result = await axios.post(`${apiAddress}/login`, null ,{
                 auth: {
                     username: event.target.email.value,
                     password: event.target.password.value

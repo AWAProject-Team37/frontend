@@ -3,12 +3,14 @@ import axios from 'axios';
 import TopBar from '../Components/TopBar'
 import RestaurantList from '../Components/RestaurantList'
 import "../Styles/FrontPage.css"
+import {apiAddress} from "../Constants"
+
 const FrontPage = (props) => {
     const [searchValue, setSearchValue] = useState("");
     const [restaurants, setRestaurants] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:4000/restaurants").then(res => {
+        axios.get(`${apiAddress}/restaurants`).then(res => {
             setRestaurants(res.data);
         }).catch(err => console.log(err))
     },[])

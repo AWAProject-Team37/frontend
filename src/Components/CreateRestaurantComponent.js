@@ -2,8 +2,9 @@ import React from 'react'
 import "../Styles/CreateRestaurant.css"
 import { useState } from 'react';
 import axios from 'axios';
+import {apiAddress} from "../Constants"
 
-const CreateRestaurantComponent = () => {
+const CreateRestaurantComponent = (props) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const [name, setName] = useState('')
     const [Address, setAddress] = useState('')
@@ -27,10 +28,10 @@ const CreateRestaurantComponent = () => {
         formData.append('image', image);
         formData.append('type', type);
         formData.append('price', price);
-        
+        formData.append('id', props.idUser);
         setIsPending(true);      
         
-        axios.post('http://localhost:4000/restaurants', formData, config)
+        axios.post(`${apiAddress}/restaurants`, formData, config)
         .then(() => {
         setIsPending(false);
         window.location.reload(true);

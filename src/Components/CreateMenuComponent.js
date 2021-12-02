@@ -2,29 +2,37 @@ import React from 'react'
 import "../Styles/CreateMenu.css"
 import { useState } from 'react'
 import axios from 'axios'
-
-
-
-
+import {apiAddress} from "../Constants"
 
 const CreateMenuComponent = (props) => {
-
-
    const handleSubmit = (e) => {
        e.preventDefault();
-       const product = {name,desc,image,type,price}
-       console.log(product);
+       const config = {
+        headers: {
+          "Content-type": "multipart/form-data"
+        }
+      }
+      const formData = new FormData();
+      formData.append('id', props.idRestaurant);
+      formData.append('name', name);
+      formData.append('price', price);
+      formData.append('category', category)
+      formData.append('image', image);
+      formData.append('desc', desc);
+      
+      
+       
        setIsPending(true);
-       axios.post('http://localhost:4000/items', product)
+       axios.post(`${apiAddress}/items`, formData, config)
        .then(response => {
-           console.log(response)
+           console.log(response);
            setIsPending(false);
            clearFields(e);
            setDesc("");
            setPrice("");
            setName("");
            setImage("");
-           setType("");
+           setCategory("");
        })
       
        .catch(error=>{
@@ -39,7 +47,7 @@ const CreateMenuComponent = (props) => {
     const [name, setName] = useState('')
     const [desc, setDesc] = useState('')
     const [image, setImage] = useState('')
-    const [type, setType] = useState('')
+    const [category, setCategory] = useState('')
     const [price, setPrice] = useState('')
     const [ isPending, setIsPending] = useState(false)
     return (
@@ -71,17 +79,17 @@ const CreateMenuComponent = (props) => {
                  />
                  <label> Image: </label>
                  <input
-                 type="text"
+                 type="file"
                  required
-                 value = {image}
-                 onChange={(e) => setImage(e.target.value)}
+                 //value = {image}
+                 onChange={(e) => setImage(e.target.files[0])}
                  />
                   <label> Category: </label>
                     <input
                     type = "text"
                     required
-                    value = {type}
-                    onChange={(e) => setType(e.target.value)}
+                    value = {category}
+                    onChange={(e) => setCategory(e.target.value)}
                     />
                       
                 {!isPending &&<button > Add product</button>}
