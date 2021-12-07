@@ -59,7 +59,7 @@ const RestaurantPage = (props) => {
             alert("Order received. Thanks!")
         }).catch(error => {
             setShoppingCart([]);
-            alert("Something went wrong")
+            alert("Something went wrong :(")
         });
     
     }
