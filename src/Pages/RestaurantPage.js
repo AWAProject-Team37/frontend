@@ -5,8 +5,8 @@ import "../Styles/RestaurantPage.css"
 import RestaurantMenu from '../Components/RestaurantMenu';
 import {apiAddress} from "../Constants"
 import ShoppingCart from '../Components/ShoppingCart';
-const RestaurantPage = () => {
-
+import { v4 as uuidv4 } from 'uuid';
+const RestaurantPage = (props) => {
     const [restaurantData, setRestaurantData] = useState(null);
     const [restaurantMenu, setRestaurantMenu] = useState(null);
     const [loadingData, setLoadingData] = useState(true);
@@ -45,6 +45,25 @@ const RestaurantPage = () => {
             }
             setShoppingCart(arrCopy);
     }
+
+    const orderInfo = {
+        idOrder: uuidv4(),
+        idUser: props.userInfo.idUser,
+        idRestaurant: restaurantID,
+        items: shoppingCart,
+        date: new Date().toString().split(/GMT/)[0].trim()
+    }
+    const makeOrder = () => {
+        axios.post(`${apiAddress}/orders/new`, orderInfo).then( res => {
+            setShoppingCart([]);
+            alert("Order received. Thanks!")
+        }).catch(error => {
+            setShoppingCart([]);
+            alert("Something went wrong")
+        });
+    
+    }
+
     useEffect(() => {
         axios.get(`${apiAddress}/restaurants/${restaurantID}`).then(res => {
             setRestaurantData(res.data)
@@ -64,7 +83,7 @@ const RestaurantPage = () => {
             <h1>{restaurantData[0].Name}</h1>
             <div className="menuAndCartContainer">
                 <RestaurantMenu items={restaurantMenu} addToShoppingCart={addToShoppingCart}/>
-                <ShoppingCart items={shoppingCart} onIncrease={onIncrease} onDecrease={onDecrease}/>
+                <ShoppingCart items={shoppingCart} onIncrease={onIncrease} onDecrease={onDecrease} makeOrder={makeOrder} userInfo={props.userInfo}/>
             </div>
         </div>
         </>

@@ -8,7 +8,6 @@ import {apiAddress} from "../Constants"
 const FrontPage = (props) => {
     const [searchValue, setSearchValue] = useState("");
     const [restaurants, setRestaurants] = useState([]);
-
     useEffect(() => {
         axios.get(`${apiAddress}/restaurants`).then(res => {
             setRestaurants(res.data);

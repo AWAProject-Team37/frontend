@@ -5,7 +5,6 @@ import LoginPage from './Pages/LoginPage';
 import FrontPage from './Pages/FrontPage';
 import ManagerPage from './Pages/ManagerPage';
 import RestaurantPage from './Pages/RestaurantPage';
-import ShoppingCartPage from './Pages/ShoppingCartPage';
 import jwt from 'jsonwebtoken';
 
 function App() {
@@ -35,27 +34,18 @@ function App() {
     routes = <>
     <Route path="/foodapp" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
     <Route path="*" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
-    <Route path="/cart" element={<ShoppingCartPage/>}/>
-    <Route path="foodapp/restaurant/:id" element={<RestaurantPage/>}/>
+    <Route path="foodapp/restaurant/:id" element={<RestaurantPage userInfo={userInfo}/>}/>
   </>
   }
   // Routes for manager login
   if(userToken != null && userInfo.isManager === 1){
     routes = <>
-
-    <Route path="/foodapp" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
-    <Route path="*" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
-    <Route path="/cart" element={<ShoppingCartPage/>}/>
-    <Route path="/restaurant/:id" element={<RestaurantPage/>}/>
-    <Route path="/manager" element={<ManagerPage logout={logout} userInfo={userInfo}/>}/>
-    <Route path="foodapp/restaurant/:id" element={<RestaurantPage/>}/>
+    <Route path="foodapp/restaurant/:id" element={<RestaurantPage userInfo={userInfo}/>}/>
     <Route path="/foodapp" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
     <Route path="*" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
     <Route path="/manager" element={<ManagerPage id={userInfo.idUser}/>}/>
-
     </>
   }
-  console.log(userInfo);
   return (
     <BrowserRouter>
       <Routes>

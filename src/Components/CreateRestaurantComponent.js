@@ -12,7 +12,7 @@ const CreateRestaurantComponent = (props) => {
     const [image, setImage] = useState('')
     const [type, setType] = useState('Buffet')
     const [price, setPrice] = useState('€')
-    const [ isPending, setIsPending] = useState(false)
+    const [isPending, setIsPending] = useState(false)
 
      const handleSubmit = (e) => {
         e.preventDefault();
