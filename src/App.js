@@ -42,10 +42,17 @@ function App() {
   // Routes for manager login
   if(userToken != null && userInfo.isManager === 1){
     routes = <>
+
+    <Route path="/foodapp" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
+    <Route path="*" element={<FrontPage userToken={userToken} logout={logout} userInfo={userInfo}/>}/>
+    <Route path="/cart" element={<ShoppingCartPage/>}/>
+    <Route path="/restaurant/:id" element={<RestaurantPage/>}/>
+    <Route path="/manager" element={<ManagerPage logout={logout} userInfo={userInfo}/>}/>
     <Route path="foodapp/restaurant/:id" element={<RestaurantPage/>}/>
     <Route path="/foodapp" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
     <Route path="*" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
     <Route path="/manager" element={<ManagerPage id={userInfo.idUser}/>}/>
+
     </>
   }
   console.log(userInfo);

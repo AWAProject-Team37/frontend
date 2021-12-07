@@ -69,3 +69,13 @@ background-color: #2C315D;
     background-color: #2C315D;   
     color: white;
 }
+.MainInfo h2{
+    font-size: 62px;
+    font-weight: bolder;
+    font-family:monospace;
+    color: #2C315D;
+    position:absolute;
+    top: 33%;
+    right: 28%;
+    
+}

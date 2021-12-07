@@ -8,6 +8,12 @@ import ViewOrdersComponent from '../Components/ViewOrdersComponent'
 import ManagerMainMenu from '../Components/ManagerMainMenu'
 import axios from 'axios'
 import {apiAddress} from '../Constants'
+import MainMenuInfo from '../Components/MainMenuInfo'
+
+
+ 
+
+
  const ManagerPage = (props) => {
      useEffect( () => {
         const getRestaurantData = async () => {
@@ -16,6 +22,7 @@ import {apiAddress} from '../Constants'
         }
         getRestaurantData();
      },[props.id])
+
      const [view, setView] = useState("");
      const [restaurantData, setRestaurantData] = useState(null);
      let toggleView = (viewMode) => {
@@ -24,9 +31,15 @@ import {apiAddress} from '../Constants'
 
     return (
         <>
-        <ManagerTopBar/>
-        <ManagerMainMenu toggleView={toggleView}/>
 
+        <ManagerTopBar userInfo={props.userInfo} logout={props.logout}/>
+        
+        
+
+        <ManagerMainMenu toggleView={toggleView}/>
+        
+        
+        {view === "mainmenu" ? <MainMenuInfo/> : null}
         {view === "foodmenu" ? <CreateMenuComponent idRestaurant={restaurantData.idRestaurant}/> : null} 
         {view === "controlorder" ? <ControlOrderComponent/> : null}
         {view === "restaurants" ? <CreateRestaurantComponent idUser={props.id}/> : null}

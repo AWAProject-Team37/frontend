@@ -1,12 +1,14 @@
 import React from 'react'
 import "../Styles/ManagerTopBar.css"
 
-const ManagerTopBar = () => {
+const ManagerTopBar = (props) => {
     return (
         <div className="topBarContainer">
             
             <div className="logo"> FoodApp</div>
-            <div className="logout">Log out</div>
+            
+            <button onClick={props.logout}>Logout</button>
+            
             <div className="sign"> Restaurant Manager</div>
             
             
