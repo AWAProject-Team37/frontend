@@ -1,0 +1,38 @@
+.OrderForm{
+    
+    max-width: 400px;
+    margin: 0 auto;
+    text-align:  center;
+    margin-top: -22%;
+    
+}
+.OrderForm h3{
+    color: #2C315D;
+    font-size: 30px;
+}
+.OrderForm label{
+    text-align: left;
+    display: block;
+    font-size: 20px;
+}
+.OrderForm input, .OrderForm select{
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+    font-size: 20px;
+
+}
+.OrderForm button{
+    background-color: #2C315D;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 110px;
+    height: 50px;
+    
+}

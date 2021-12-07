@@ -26,7 +26,18 @@
     font-size: 16px;
     
 }
-.logout{
+.topBarContainer button{
+    
+    margin-left: 50px;
+    border: 1px solid white;
     color: white;
-    font-size: 16px;
+    background-color: #2C315D;
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+.topBarContainer button:hover{
+    cursor: pointer;
+    background-color: #464d8b;
 }
