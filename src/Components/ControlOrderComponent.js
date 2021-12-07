@@ -59,7 +59,7 @@ const ControlOrderComponent = () => {
         e.preventDefault();
         const orderStatus = {status};
         console.log(orderStatus);
-        axios.post('http://localhost:4000/orders', status )
+        axios.put('http://localhost:4000/orders', status )
         .then( res => {
             console.log(res)
             clearFields(e);

@@ -7,16 +7,16 @@ const ViewOrdersComponent = () => {
     
     const [orders,setOrders] = useState([])
 
-     useEffect(() => {
-        axios.get(`http://localhost:4000/orders/${restaurantID}`)
-        .then(res =>{
-            console.log(res)
-            setOrders(res.data)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
-    })
+    //  useEffect(() => {
+    //     axios.get(`http://localhost:4000/orders/${restaurantID}`)
+    //     .then(res =>{
+    //         console.log(res)
+    //         setOrders(res.data)
+    //     })
+    //     .catch(err =>{
+    //         console.log(err)
+    //     })
+    // })
     
     return (
         <>
