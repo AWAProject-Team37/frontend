@@ -29,7 +29,7 @@ const RestaurantMenu = (props) => {
             <button onClick={() => {setCategorySelect("")}} className="showAllCategoriesButton">Show all</button>
             </div>
             <div className="menuItemsContainer">
-                {propsArray.filter(e => e.Category.includes(categorySelect)).map(e => <MenuItemComponent itemName={e.Name} key={e.idItem} price={e.Price} image={e.Image} addToShoppingCart={props.addToShoppingCart}/>)}
+                {propsArray.filter(e => e.Category.includes(categorySelect)).map(e => <MenuItemComponent idItem={e.idItem} itemName={e.Name} key={e.idItem} price={e.Price} image={e.Image} addToShoppingCart={props.addToShoppingCart}/>)}
             </div>
         </div>
     )

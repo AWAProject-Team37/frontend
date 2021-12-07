@@ -20,7 +20,7 @@ const ShoppingCart = (props) => {
             <div style={{fontWeight: "bold", fontSize: "18px"}}>
             Total price: {price}€
             </div>
-            <button onClick={() => console.log(cartItems)}>Checkout</button>
+            <button onClick={props.makeOrder}>Checkout</button>
             </>}
             
         </div>
