@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 //import TopBar from '../Components/TopBar';
 import "../Styles/RestaurantPage.css"
+import "../Styles/ShoppingCart.css"
 import RestaurantMenu from '../Components/RestaurantMenu';
 import {apiAddress} from "../Constants"
 import ShoppingCart from '../Components/ShoppingCart';
@@ -46,20 +47,22 @@ const RestaurantPage = (props) => {
             setShoppingCart(arrCopy);
     }
 
-    const orderInfo = {
-        idOrder: uuidv4(),
-        idUser: props.userInfo.idUser,
-        idRestaurant: restaurantID,
-        items: shoppingCart,
-        date: new Date().toString().split(/GMT/)[0].trim()
-    }
-    const makeOrder = () => {
+    const makeOrder = (address) => {
+        const orderInfo = {
+            idOrder: uuidv4(),
+            idUser: props.userInfo.idUser,
+            idRestaurant: restaurantID,
+            items: shoppingCart,
+            date: new Date().toString().split(/GMT/)[0].trim(),
+            address: address
+        }
+
         axios.post(`${apiAddress}/orders/new`, orderInfo).then( res => {
             setShoppingCart([]);
             alert("Order received. Thanks!")
         }).catch(error => {
             setShoppingCart([]);
-            alert("Something went wrong")
+            alert("Something went wrong :(")
         });
     
     }

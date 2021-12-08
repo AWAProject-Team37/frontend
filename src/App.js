@@ -11,15 +11,15 @@ function App() {
   const [userToken, setUserToken] = useState(null);
   const userInfo = jwt.decode(userToken);
   useEffect(() => {
-    setUserToken(localStorage.getItem('userToken'));
+    setUserToken(sessionStorage.getItem('userToken'));
   },[])
 
   const getJwt = (jwt) => {
-    localStorage.setItem('userToken', jwt);
-    setUserToken(localStorage.getItem('userToken'));
+    sessionStorage.setItem('userToken', jwt);
+    setUserToken(sessionStorage.getItem('userToken'));
   }
   const logout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     setUserToken(null);
   }
 
