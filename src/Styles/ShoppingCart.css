@@ -1,0 +1,80 @@
+.menuAndCartContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.shoppingCartContainer{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0px 4px 15px 2px #000000;
+    width: 350px;
+    min-width: 250px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 5px;
+}
+
+.cartItemContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0px 3px 0px;
+}
+.addButton{
+    background-color: #22ad29;
+    border: none;
+    color: white;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+.removeButton{
+    background-color: rgb(189, 41, 41);
+    border: none;
+    color: white;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+.paymentView{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.orderForm{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.orderButton{
+    color: white;
+    background-color: #36a836;
+    border: none;
+    width: 75%;
+    height: 30px;
+    cursor: pointer;
+    align-self: center;
+}
+.orderButton:hover{
+    background-color: #5ed15e;
+}
+.cancelButton{
+    align-self: center;
+}
+.checkoutButton{
+    color: white;
+    background-color: #36a836;
+    border: none;
+    width: 75%;
+    height: 30px;
+    cursor: pointer;
+    align-self: center;
+}
+.checkoutButton:hover{
+    background-color: #5ed15e;
+}
