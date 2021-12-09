@@ -6,6 +6,7 @@ import FrontPage from './Pages/FrontPage';
 import ManagerPage from './Pages/ManagerPage';
 import RestaurantPage from './Pages/RestaurantPage';
 import jwt from 'jsonwebtoken';
+import OrderPage from './Pages/OrderPage';
 
 function App() {
   const [userToken, setUserToken] = useState(null);
@@ -29,23 +30,24 @@ function App() {
     <Route path="*" element={<LoginPage getJwt={getJwt}/>}/>
     
   </>
-  // Routes for customer login
   if(userToken != null){
-    routes = <>
-    <Route path="/foodapp" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
-    <Route path="*" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
-    <Route path="foodapp/restaurant/:id" element={<RestaurantPage userInfo={userInfo}/>}/>
-  </>
-  }
-  // Routes for manager login
-  if(userToken != null && userInfo.isManager === 1){
-    routes = <>
-    <Route path="foodapp/restaurant/:id" element={<RestaurantPage userInfo={userInfo}/>}/>
-    <Route path="/foodapp" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
-    <Route path="*" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
-    <Route path="/manager" element={<ManagerPage id={userInfo.idUser}/>}/>
+    //Routes for manager login
+    if(userInfo.isManager === 1){
+      routes = <>
+    <Route path="*" element={<ManagerPage id={userInfo.idUser} logout={logout}/>}/>
+    <Route path="/manager" element={<ManagerPage id={userInfo.idUser} logout={logout}/>}/>
     </>
+    //Routes for customer login
+    } else {
+      routes = <>
+      <Route path="/foodapp" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
+      <Route path="/orders" element={<OrderPage logout={logout} userInfo={userInfo}/>}/>
+      <Route path="*" element={<FrontPage logout={logout} userInfo={userInfo}/>}/>
+      <Route path="foodapp/restaurant/:id" element={<RestaurantPage userInfo={userInfo}/>}/>
+      </>
+    } 
   }
+
   return (
     <BrowserRouter>
       <Routes>
