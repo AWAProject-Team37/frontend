@@ -1,36 +1,36 @@
 import React from 'react'
 import axios from 'axios'
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
+import {apiAddress} from "../Constants"
+import UncompletedOrders from './UncompletedOrders';
 
 
-const ViewOrdersComponent = () => {
+const ViewOrdersComponent = (props) => {
+
+    const idRestaurant = props.Data.idRestaurant;
     
     const [orders,setOrders] = useState([])
-
-    //  useEffect(() => {
-    //     axios.get(`http://localhost:4000/orders/${restaurantID}`)
-    //     .then(res =>{
-    //         console.log(res)
-    //         setOrders(res.data)
-    //     })
-    //     .catch(err =>{
-    //         console.log(err)
-    //     })
-    // })
+   
+    
+     useEffect(() => {
+         const getManagerOrders = async () => {
+          let result = await axios.get(`${apiAddress}/orders/completed/${idRestaurant}`)
+          setOrders(result.data);
+         }
+        getManagerOrders();
+            
+    },[idRestaurant])
+    
+    console.log(orders);
     
     return (
         <>
         
         <div className = "ViewOrdersComponent">
-            {orders.map( order=> (
-                <li key={order.orderId}> 
-                {order.FirstName}
-                {order.LastName}
-                {order.Product}
-                {order.Price}
-                </li>
+            <h1> Order history </h1>
 
-            ))}
+             {orders.map(e => <UncompletedOrders key={e.idOrder}{...e}/>)}
+            
         </div>
         </>
     )

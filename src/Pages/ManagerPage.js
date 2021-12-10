@@ -41,9 +41,9 @@ import MainMenuInfo from '../Components/MainMenuInfo'
         
         {view === "mainmenu" ? <MainMenuInfo/> : null}
         {view === "foodmenu" ? <CreateMenuComponent idRestaurant={restaurantData.idRestaurant}/> : null} 
-        {view === "controlorder" ? <ControlOrderComponent/> : null}
+        {view === "controlorder" ? <ControlOrderComponent Data={restaurantData}/> : null}
         {view === "restaurants" ? <CreateRestaurantComponent idUser={props.id}/> : null}
-        {view === "vieworders" ? <ViewOrdersComponent/> : null} 
+        {view === "vieworders" ? <ViewOrdersComponent Data={restaurantData}/>  : null} 
         </>
     )
 }
