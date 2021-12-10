@@ -9,6 +9,8 @@ const TopBar = (props) => {
             <span className="welcomeText">Welcome {props.userInfo.FirstName}</span>
             <div className="buttons">
                 {props.userInfo.isManager === 1 ? <button onClick={() => {navigate("/manager")}}>Manager menu</button> : null}
+                <button onClick={() => {navigate("/foodapp")}}>Restaurants</button>
+                <button onClick={() => {navigate("/orders")}}>Orders</button>
                 <button onClick={props.logout}>Logout</button>
             </div>
         </div>

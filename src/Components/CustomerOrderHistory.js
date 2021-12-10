@@ -12,13 +12,20 @@ const CustomerOrderHistory = (props) => {
         }
         getOrders();
     },[props.userInfo.idUser])
-    console.log(orders);
     return (
-        <div>
-            <h1>Active orders</h1>
-            {orders.filter(e => e.Status !== "Delivered").map(e => <OrderComponent key={e.idOrder} {...e}/>)}
-            <h1>Order history</h1>
-            {orders.filter(e => e.Status === "Delivered").map(e => <OrderComponent key={e.idOrder} {...e}/>)}
+        <div className="ordersContainer">
+            <div className="activeOrders">
+                <h1>Active orders</h1>
+                {orders.filter(e => e.Status !== "Delivered").length === 0 ? "No active orders" 
+                : orders.filter(e => e.Status !== "Delivered").map(e => <OrderComponent key={e.idOrder} {...e}/>)}
+                
+            </div>
+            <div className="orderHistory">
+                <h1>Order history</h1>
+                {orders.filter(e => e.Status === "Delivered").length === 0 ? "Order history is empty"
+                : orders.filter(e => e.Status === "Delivered").map(e => <OrderComponent key={e.idOrder} {...e}/>)}
+            </div>
+            
         </div>
     )
 }
