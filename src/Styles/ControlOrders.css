@@ -1,21 +1,14 @@
 .OrderForm{
-    
-    max-width: 400px;
-    margin: 0 auto;
-    text-align:  center;
-    margin-top: -22%;
-    
+    display: flex;
+    flex-direction:column;
 }
-.OrderForm h3{
+ 
+
+.OrderForm h2{
     color: #2C315D;
-    font-size: 30px;
-}
-.OrderForm label{
-    text-align: left;
-    display: block;
     font-size: 20px;
 }
-.OrderForm input, .OrderForm select{
+.OrderForm select{
     width: 100%;
     padding: 6px 10px;
     margin: 10px 0;
@@ -23,16 +16,22 @@
     box-sizing: border-box;
     display: block;
     font-size: 20px;
+    max-width: 400px;
 
+}
+.OrderForm label{
+    text-align: left;
+    display: block;
+    font-size: 20px;
 }
 .OrderForm button{
     background-color: #2C315D;
     color: #fff;
     border: 0;
-    padding: 8px;
+    padding: 0px;
     border-radius: 8px;
     cursor: pointer;
-    width: 110px;
-    height: 50px;
+    width: 70px;
+    height: 30px;
     
 }
