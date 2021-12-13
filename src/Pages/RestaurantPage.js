@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-//import TopBar from '../Components/TopBar';
 import "../Styles/RestaurantPage.css"
 import "../Styles/ShoppingCart.css"
 import RestaurantMenu from '../Components/RestaurantMenu';
@@ -80,7 +79,6 @@ const RestaurantPage = (props) => {
     return (
         loadingData || loadingMenu === true ? <div></div> :
         <>
-        {/*<TopBar/>*/}
         <img src={restaurantData[0].Image} alt="restaurant" className="restaurantHeaderImg"/>
         <div className="restaurantBody">
             <h1>{restaurantData[0].Name}</h1>

@@ -77,7 +77,6 @@ const CreateRestaurantComponent = (props) => {
                  <input
                  type="file"
                  required
-                 //value = {image}
                  onChange={(e) => setImage(e.target.files[0])}
                  />
                   <label> Restaurant type: </label>
