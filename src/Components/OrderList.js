@@ -8,7 +8,7 @@ const OrderList = (props) => {
   
     
     const [orderItems, setOrderItems] = useState([])
-    
+    const [settingStatus, setSettingsStatus] = useState(false);
 
     useEffect(() =>{
         const getManagerItems = async () => {
@@ -17,26 +17,23 @@ const OrderList = (props) => {
            
         }
         getManagerItems();
-    },[])
+    },[props.idOrder])
     
     const handleSubmit = async (e) => {
         e.preventDefault();
         const orderStatus = e.target.status.value;
         
-        
-        await axios.put(`${apiAddress}/orders/status/`,{id: props.idOrder, status: orderStatus}  )
+        setSettingsStatus(true);
+        await axios.put(`${apiAddress}/orders/status/`,{id: props.idOrder, status: orderStatus})
         .then( res => {
-            
-            
-            
+            setSettingsStatus(false);
+            window.location.reload(false);
         })
         .catch(error=>{
             console.log(error)
         })
         
     }
-    
-console.log(orderItems);
 
 return (
 
@@ -60,7 +57,7 @@ return (
 
                       
                </select>
-               <button> Set status </button>
+               {settingStatus ? <div>Setting status...</div> :<button> Set status </button>}
         
        </form>
         

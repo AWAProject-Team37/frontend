@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState , useEffect } from 'react';
 import {apiAddress} from "../Constants"
 import UncompletedOrders from './UncompletedOrders';
-
+import "../Styles/ViewManagerOrders.css"
 
 const ViewOrdersComponent = (props) => {
 

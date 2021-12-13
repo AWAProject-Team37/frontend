@@ -10,28 +10,20 @@ const ControlOrderComponent = (props) => {
     const idRestaurant = props.Data.idRestaurant;
     
     const [orders,setOrders] = useState([])
-   
-    
      useEffect(() => {
         const getManagerOrders = async () => {
-        if(idRestaurant === undefined){
             let result = await axios.get(`${apiAddress}/orders/uncompleted/${idRestaurant}`)
+            console.log(result.data);
             setOrders(result.data);
         }
-        
-          
-        }
         getManagerOrders();
-            
     },[idRestaurant])
-    
-    console.log(orders);
-    
+  
     return (
         <>
         
         <div className = "ControlOrdersComponent">
-            
+            <h1>Control orders</h1>
 
              {orders.map(e => <OrderList key={e.idOrder}{...e}/>)}
             

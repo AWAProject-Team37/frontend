@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect,useState } from 'react'
 import { apiAddress } from '../Constants'
-
+import "../Styles/ViewManagerOrders.css"
 const UncompletedOrders = (props) => {
     
     const [orderItems, setOrderItems] = useState([])

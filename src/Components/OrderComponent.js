@@ -4,7 +4,8 @@ import {apiAddress} from '../Constants'
 const OrderComponent = (props) => {
     const [orderItems, setOrderItems] = useState([])
     const confirmDelivery = async () => {
-        await axios.put(`${apiAddress}/orders/status`, {status: "Delivered", id: props.idOrder}).then(window.location.reload(false));
+        await axios.put(`${apiAddress}/orders/status`, {status: "Delivered", id: props.idOrder}).then(res => {
+            window.location.reload(false)});
     }
     const calculateTotalPrice = () => {
         let price = 0 ;

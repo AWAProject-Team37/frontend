@@ -28,7 +28,6 @@ const ManagerPage = (props) => {
         getRestaurantData();
     },[props.id])
 
-
     let toggleView = (viewMode) => {
          setView(viewMode);
     }
@@ -44,7 +43,6 @@ const ManagerPage = (props) => {
         
         <div className="menuView">
         <ManagerMainMenu toggleView={toggleView} restaurantCreated={restaurantCreated}/>
-        
         
         {view === "mainmenu" ? <MainMenuInfo/> : null}
         {view === "restaurants" ? <CreateRestaurantComponent idUser={props.id}/> : null}
