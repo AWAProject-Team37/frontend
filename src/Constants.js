@@ -1,3 +1,3 @@
-const apiAddress = "http://localhost:4000";
+const apiAddress = "https://fooddeliveryapp-api.herokuapp.com";
 
 export {apiAddress};

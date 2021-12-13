@@ -4,35 +4,33 @@ import {apiAddress} from "../Constants"
 const RegisterView = () => {
     const [registerError, setRegisterError] = useState(false);
     const [registerSuccesfull, setRegisterSuccesfull] = useState(false);
-
+    const [registerInProgress, setRegisterInProgres] = useState(false);
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setRegisterInProgres(true);
         let managerStatus;
         if(event.target.AccountType.value === "Customer"){
             managerStatus = false;
         } else {
             managerStatus = true;
         }
-        try{
-            const result = await axios.post(`${apiAddress}/register`, {
-                FirstName: event.target.FirstName.value,
-                LastName: event.target.LastName.value,
-                Email: event.target.Email.value,
-                Password: event.target.Password.value,
-                isManager: managerStatus
-            });
-            
-            console.log(result);
-            setRegisterError(false);
-            setRegisterSuccesfull(true);
-            setTimeout(() => {
+
+        await axios.post(`${apiAddress}/register`, {
+            FirstName: event.target.FirstName.value,
+            LastName: event.target.LastName.value,
+            Email: event.target.Email.value,
+            Password: event.target.Password.value,
+            isManager: managerStatus
+            }).then(res => {
+                setRegisterError(false);
+                setRegisterSuccesfull(true);
+                setRegisterInProgres(false);
                 window.location.reload(false);
-            }, 1000)
-        } catch(error){
-            setRegisterError(true);
-            setRegisterSuccesfull(false);
-        }
-        
+            }).catch(err => {
+                setRegisterError(true);
+                setRegisterSuccesfull(false);
+        });
+          
     }
     return (
         <div className="loginForm">
@@ -52,7 +50,7 @@ const RegisterView = () => {
                 <option value="Customer">Customer</option>
                 <option value="Restaurant manager">Restaurant manager</option>
             </select>
-            <button className="loginFormButton">Register</button>
+            {registerInProgress ? <div>Registering ... </div> : <button className="loginFormButton">Register</button>}
             </form>
         </div>
     )

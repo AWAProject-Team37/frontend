@@ -23,7 +23,7 @@ import MainMenuInfo from '../Components/MainMenuInfo'
         getRestaurantData();
      },[props.id])
 
-     const [view, setView] = useState("");
+     const [view, setView] = useState("mainmenu");
      const [restaurantData, setRestaurantData] = useState(null);
      let toggleView = (viewMode) => {
          setView(viewMode);
@@ -35,7 +35,7 @@ import MainMenuInfo from '../Components/MainMenuInfo'
         <ManagerTopBar userInfo={props.userInfo} logout={props.logout}/>
         
         
-
+        <div className="menuView">
         <ManagerMainMenu toggleView={toggleView}/>
         
         
@@ -44,6 +44,7 @@ import MainMenuInfo from '../Components/MainMenuInfo'
         {view === "controlorder" ? <ControlOrderComponent Data={restaurantData}/> : null}
         {view === "restaurants" ? <CreateRestaurantComponent idUser={props.id}/> : null}
         {view === "vieworders" ? <ViewOrdersComponent Data={restaurantData}/>  : null} 
+        </div>
         </>
     )
 }
