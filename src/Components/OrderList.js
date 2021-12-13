@@ -14,7 +14,7 @@ const OrderList = (props) => {
         const getManagerItems = async () => {
             let result = await axios.get(`${apiAddress}/orders/items/${props.idOrder}`)
             setOrderItems(result.data);
-            console.log(result.data);
+           
         }
         getManagerItems();
     },[])
@@ -22,11 +22,11 @@ const OrderList = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const orderStatus = e.target.status.value;
-        console.log(orderItems);
+        
         
         await axios.put(`${apiAddress}/orders/status/`,{id: props.idOrder, status: orderStatus}  )
         .then( res => {
-            console.log(res)
+            
             
             
         })

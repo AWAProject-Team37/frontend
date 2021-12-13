@@ -25,7 +25,6 @@ const CreateMenuComponent = (props) => {
        setIsPending(true);
        axios.post(`${apiAddress}/items`, formData, config)
        .then(response => {
-           console.log(response);
            setIsPending(false);
            clearFields(e);
            setDesc("");

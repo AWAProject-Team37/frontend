@@ -11,7 +11,7 @@ const UncompletedOrders = (props) => {
         const getManagerItems = async () =>{
             let result = await axios.get(`${apiAddress}/orders/items/${props.idOrder}`)
             setOrderItems(result.data);
-            console.log(result.data);
+            
         }
         getManagerItems();
     },[props.idOrder])

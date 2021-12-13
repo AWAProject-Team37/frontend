@@ -21,7 +21,7 @@ const ViewOrdersComponent = (props) => {
             
     },[idRestaurant])
     
-    console.log(orders);
+   
     
     return (
         <>
