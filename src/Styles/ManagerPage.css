@@ -7,75 +7,60 @@
 .container{
     display: flex;
     flex-direction: column;
-   
 }
 .button3{
-   
-width: 200px;
-height: 80px;
-left: 0px;
-font-weight: bold;
-font-size: 26px;
-color: white;
-background-color: #2C315D;
-   
-
-
-}
-.button2{
-    
     width: 200px;
     height: 80px;
-    left: 0px;
     font-weight: bold;
     font-size: 26px;
     color: white;
-    
+    background-color: #2C315D;
+}
+.button2{
+    width: 200px;
+    height: 80px;
+    font-weight: bold;
+    font-size: 26px;
+    color: white;
     background-color: #2C315D;
 }
 .button1{
-    
     width: 200px;
     height: 80px;
-    left: 0px;
-    
-    
     font-weight: bold;
     font-size: 26px;
     color: white;
     background-color: #2C315D;
-    
-    
 }
 .button4{
-    
     width: 200px;
     height: 80px;
-    left: 0px;
-    top: 300px;
     font-weight: bold;
     font-size: 26px;
     color: white;
     background-color: #2C315D;
-    
 }
 .mainmenu{
     width: 200px;
     height: 80px;
-    left: 0px;
-    top: 300px;
     font-weight: bold;
     font-size: 26px;
     background-color: #2C315D;   
     color: white;
+}
+.MainInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 .MainInfo h2{
     font-size: 62px;
     font-weight: bolder;
     font-family:monospace;
     color: #2C315D;
-    position:absolute;
-    top: 33%;
-    right: 28%;
-    
+}
+
+.menuView{
+    display: flex;
 }
