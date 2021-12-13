@@ -13,11 +13,14 @@ const ControlOrderComponent = (props) => {
    
     
      useEffect(() => {
-         const getManagerOrders = async () => {
-          let result = await axios.get(`${apiAddress}/orders/uncompleted/${idRestaurant}`)
-          setOrders(result.data);
+        const getManagerOrders = async () => {
+        if(idRestaurant === undefined){
+            let result = await axios.get(`${apiAddress}/orders/uncompleted/${idRestaurant}`)
+            setOrders(result.data);
+        }
+        
           
-         }
+        }
         getManagerOrders();
             
     },[idRestaurant])

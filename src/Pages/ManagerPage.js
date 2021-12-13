@@ -14,20 +14,27 @@ import MainMenuInfo from '../Components/MainMenuInfo'
  
 
 
- const ManagerPage = (props) => {
-     useEffect( () => {
+const ManagerPage = (props) => {
+    const [view, setView] = useState("mainmenu");
+    const [restaurantData, setRestaurantData] = useState(null);
+    let restaurantCreated = false;
+
+    useEffect( () => {
         const getRestaurantData = async () => {
             const data = await axios.get(`${apiAddress}/restaurants/userid/${props.id}`)
             setRestaurantData(data.data[0]);
+            
         }
         getRestaurantData();
-     },[props.id])
+    },[props.id])
 
-     const [view, setView] = useState("mainmenu");
-     const [restaurantData, setRestaurantData] = useState(null);
-     let toggleView = (viewMode) => {
+
+    let toggleView = (viewMode) => {
          setView(viewMode);
-     }
+    }
+    if(restaurantData !== undefined && restaurantData !== null){
+        restaurantCreated = true;
+    }
 
     return (
         <>
@@ -36,13 +43,13 @@ import MainMenuInfo from '../Components/MainMenuInfo'
         
         
         <div className="menuView">
-        <ManagerMainMenu toggleView={toggleView}/>
+        <ManagerMainMenu toggleView={toggleView} restaurantCreated={restaurantCreated}/>
         
         
         {view === "mainmenu" ? <MainMenuInfo/> : null}
+        {view === "restaurants" ? <CreateRestaurantComponent idUser={props.id}/> : null}
         {view === "foodmenu" ? <CreateMenuComponent idRestaurant={restaurantData.idRestaurant}/> : null} 
         {view === "controlorder" ? <ControlOrderComponent Data={restaurantData}/> : null}
-        {view === "restaurants" ? <CreateRestaurantComponent idUser={props.id}/> : null}
         {view === "vieworders" ? <ViewOrdersComponent Data={restaurantData}/>  : null} 
         </div>
         </>
