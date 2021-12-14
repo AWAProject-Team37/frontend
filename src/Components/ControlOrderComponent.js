@@ -13,7 +13,6 @@ const ControlOrderComponent = (props) => {
      useEffect(() => {
         const getManagerOrders = async () => {
             let result = await axios.get(`${apiAddress}/orders/uncompleted/${idRestaurant}`)
-            console.log(result.data);
             setOrders(result.data);
         }
         getManagerOrders();

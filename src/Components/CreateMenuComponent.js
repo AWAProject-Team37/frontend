@@ -5,6 +5,15 @@ import axios from 'axios'
 import {apiAddress} from "../Constants"
 
 const CreateMenuComponent = (props) => {
+    
+    const [name, setName] = useState('')
+    const [desc, setDesc] = useState('')
+    const [image, setImage] = useState('')
+    const [category, setCategory] = useState('')
+    const [price, setPrice] = useState('')
+    const [isPending, setIsPending] = useState(false)
+    const [submitError, setSubmitError] = useState(false);
+
    const handleSubmit = (e) => {
        e.preventDefault();
        const config = {
@@ -21,7 +30,7 @@ const CreateMenuComponent = (props) => {
       formData.append('desc', desc);
       
       
-       
+       setSubmitError(false);
        setIsPending(true);
        axios.post(`${apiAddress}/items`, formData, config)
        .then(response => {
@@ -35,7 +44,9 @@ const CreateMenuComponent = (props) => {
        })
       
        .catch(error=>{
+           setSubmitError(true);
            console.log(error)
+           setIsPending(false);
        })
        
    }
@@ -43,18 +54,14 @@ const CreateMenuComponent = (props) => {
        Array.from(e.target).forEach((e) => (e.value = ""));
    }
 
-    const [name, setName] = useState('')
-    const [desc, setDesc] = useState('')
-    const [image, setImage] = useState('')
-    const [category, setCategory] = useState('')
-    const [price, setPrice] = useState('')
-    const [ isPending, setIsPending] = useState(false)
     return (
         <>
         
         <div className = "MenuForm">
+            
             <h1>Create a menu</h1>
             <h1>Add products to the menu</h1>
+            {submitError ? <div style={{color: "red"}}>Something went wrong. Please check input fields.</div> : null}
               <form onSubmit={handleSubmit}>
               <label> Name: </label>
                  <input

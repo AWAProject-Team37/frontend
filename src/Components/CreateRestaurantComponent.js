@@ -36,6 +36,7 @@ const CreateRestaurantComponent = (props) => {
         setIsPending(false);
         window.location.reload(true);
         }).catch(error => {
+          console.log(error);
           setErrorMsg(error.response.data.msg);
           setIsPending(false);
         }

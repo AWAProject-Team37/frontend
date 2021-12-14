@@ -24,7 +24,7 @@ const OrderComponent = (props) => {
             case "Preparing":
                 eta = 50;
                 break;
-            case "Ready for delivery":
+            case "ReadyForDelivery":
                 eta = 20;
                 break;
             case "Delivering":
